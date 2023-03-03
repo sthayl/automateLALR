@@ -49,3 +49,6 @@ void Lexer::Avancer() {
    tampon = nullptr;
 }
 
+void Lexer::Reculer(){
+   tete--;
+}

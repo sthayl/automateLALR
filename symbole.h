@@ -15,7 +15,7 @@ class Symbole {
       operator int() const { return ident; }
       virtual void Affiche();
       bool isTerminal() {return terminal;}
-      virtual int getValeur();
+      virtual int getValeur(){return 0;}
 
    protected:
       bool terminal;
@@ -25,7 +25,7 @@ class Symbole {
 class Entier : public Symbole {
    public:
       Entier(int v) : Symbole(INT, true), valeur(v) { }
-      ~Entier() { }
+      ~Entier() {};
       virtual void Affiche();
       int getValeur() {return valeur;}
    protected:
@@ -34,10 +34,10 @@ class Entier : public Symbole {
 
 class Expr : public Symbole {
    public:
-      Expr(int v) : Symbole(EXPR, false) {value = v;}
+      Expr(int v) : Symbole(EXPR, false) {valeur = v;}
       ~Expr() {}
-      int getValue() {return value;}
+      int getValeur() {return valeur;}
       
    protected:
-      int value;
+      int valeur;
 };
