@@ -75,7 +75,6 @@ bool E3::transition(Automate & automate, Symbole * s){
     case PLUS:
     case MULT:
     case CLOSEPAR:
-    case OPENPAR:
     {
         //r5 : E -> val
         Entier *s1 = (Entier *) automate.popSymbol();
@@ -89,7 +88,8 @@ bool E3::transition(Automate & automate, Symbole * s){
         Entier *s1 = (Entier *) automate.popSymbol();
         Expr * e = new Expr(s1->getValeur());
         automate.reduction(1,e);
-        return false;
+        break;
+        //return false;
     }
     
     default:
@@ -202,13 +202,14 @@ bool E8::transition(Automate & automate, Symbole * s){
     }
     case FIN:
     {
-    //règle 3 : E -> E+E
+    //règle 3 : E -> E*E
         Entier *s1 = (Entier *) automate.popSymbol();
         automate.popAndDestroySymbol();
         Entier *s2 = (Entier *) automate.popSymbol();
         Expr * e = new Expr(s1->getValeur()*s2->getValeur());
         automate.reduction(3,e);
-        return false;
+        //return false;
+        break;
     }
     default:
         automate.decalage(new Symbole(ERREUR, false), NULL);

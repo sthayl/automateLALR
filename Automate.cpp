@@ -11,10 +11,13 @@ Automate::Automate(string flux){
 void Automate::run(){
 
     bool syntaxeValide = true;
-
+    int res = 0;
+    Symbole * s;
     while(syntaxeValide){
-        Symbole *s = lex->Consulter();
-        lex->Avancer();
+        if(*s != FIN){
+            s = lex->Consulter();
+            lex->Avancer();
+        }
 
         //--Affichage debug--
         s->Affiche();
@@ -30,7 +33,7 @@ void Automate::run(){
         cout << "----------------" << endl;
         //-------------------
     }
-    int res = pileSymbole.front()->getValeur();
+    res = pileSymbole.front()->getValeur();
     cout << "Res = " << res << endl;
     if(*pileSymbole.back() == ERREUR) {
         cout << "Syntaxe incorrecte" << endl;

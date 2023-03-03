@@ -3,7 +3,7 @@
 
 
 int main(void) {
-   string chaine("(34+1)*123");
+   string chaine("1+2*3");
 
    Automate * analyseur = new Automate(chaine);
    analyseur->run();
