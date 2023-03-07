@@ -3,18 +3,13 @@
 
 
 int main(void) {
-   string chaine("1+2*3");
+   string chaine;
+
+   cout << "Entrez l'expression arithmétique à évaluer :" << endl;
+   cin >> chaine;
 
    Automate * analyseur = new Automate(chaine);
    analyseur->run();
 
-   // Lexer l(chaine);
-
-   // Symbole * s;
-   // while(*(s=l.Consulter())!=FIN) {
-   //    s->Affiche();
-   //    cout<<endl;
-   //    l.Avancer();
-   // }
    return 0;
 }

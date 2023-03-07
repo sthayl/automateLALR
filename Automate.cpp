@@ -19,22 +19,8 @@ void Automate::run(){
             lex->Avancer();
         }
 
-        //--Affichage debug--
-        s->Affiche();
-        cout<<endl;
-        pileEtat.back()->print();
-        cout << endl;
-        //-------------------
-
         syntaxeValide = pileEtat.back()->transition(*this, s);
-
-        //--Affichage debug--
-        cout << syntaxeValide << endl;
-        cout << "----------------" << endl;
-        //-------------------
     }
-    res = pileSymbole.front()->getValeur();
-    cout << "Res = " << res << endl;
     if(*pileSymbole.back() == ERREUR) {
         cout << "Syntaxe incorrecte" << endl;
     }
@@ -44,21 +30,9 @@ void Automate::run(){
     }
 }
 
-void Automate::decalage(Symbole * s, Etat * e) {
-
-    //--Affichage debug--
-    // cout << "Passage de l'état ";
-    // pileEtat.back()->print();
-    // cout << " à l'état ";
-    // e->print();
-    // cout << endl;
-    //-------------------
-    
+void Automate::decalage(Symbole * s, Etat * e) {  
     pileSymbole.push_back(s);
     pileEtat.push_back(e);
-    // if (s->isTerminal()) {
-    //     lex->Avancer();
-    // }
 }
 
 void Automate::reduction(int n,Symbole * s) {
